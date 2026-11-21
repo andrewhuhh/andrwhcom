@@ -11,6 +11,7 @@ site/                          everything that gets published
   assets/fonts/                Satoshi and its license
 originals/                     full resolution source PNGs (not published)
 scripts/optimize-images.mjs    turns originals/ into site/assets/images/
+banners/infisical/             source of originals/infisical.png (npm run banner)
 .github/workflows/pages.yml    deploys site/ on every push to main
 ```
 
@@ -32,6 +33,8 @@ Then open http://localhost:4173.
 ## Images
 
 Put the full resolution PNG in `originals/`, run `npm install && npm run images`, and reference the generated files from `index.html` the way the existing `<picture>` blocks do. The script writes AVIF at 800, 1400 and full width plus a 1400px WebP fallback. Generated files are committed.
+
+The Infisical banner is an HTML page in `banners/infisical/` built from infisical.com material: its logo, gradient textures and product UI captures. Edit it, then run `npm run banner` (needs `chromium` on the PATH) to render `originals/infisical.png` at 2504x1304, and `npm run images` again.
 
 ## Deploying
 
