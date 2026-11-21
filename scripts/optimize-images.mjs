@@ -1,11 +1,3 @@
-// Turns the full resolution PNGs in originals/ into the files the site serves.
-// Run with: npm install && npm run images
-//
-// Each PNG becomes one AVIF per width in WIDTHS (never upscaled) plus one at
-// its full width, named <name>-<width>.avif. Reference them from a <source>
-// srcset in index.html so browsers pick the smallest file that still looks
-// sharp. One WebP at FALLBACK_WIDTH is written for browsers without AVIF.
-
 import { mkdir, readdir } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
