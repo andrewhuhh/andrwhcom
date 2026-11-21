@@ -4,7 +4,8 @@
   "description": "Tooling for andrwh.com. The site itself is plain HTML, CSS and JS in site/ and needs no build.",
   "scripts": {
     "images": "node scripts/optimize-images.mjs",
-    "serve": "python3 -m http.server 4173 --directory site"
+    "serve": "python3 -m http.server 4173 --directory site",
+    "banner": "chromium --headless=new --no-sandbox --hide-scrollbars --allow-file-access-from-files --force-device-scale-factor=2 --window-size=1252,652 --screenshot=originals/infisical.png banners/infisical/index.html"
   },
   "devDependencies": {
     "sharp": "^0.34.0"
