@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>andrew huang</title>
+    <meta name="description" content="Designer based in Vancouver/BC/Canada/.">
+    <meta name="robots" content="max-image-preview:large">
+    <link rel="canonical" href="https://andrwh.com/">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://andrwh.com/">
+    <meta property="og:title" content="andrew huang">
+    <meta property="og:description" content="Designer based in Vancouver/BC/Canada/.">
+    <meta property="og:image" content="https://andrwh.com/assets/images/og.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="andrew huang">
+    <meta name="twitter:description" content="Designer based in Vancouver/BC/Canada/.">
+    <meta name="twitter:image" content="https://andrwh.com/assets/images/og.jpg">
+
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
+    <link rel="preload" href="assets/fonts/Satoshi-Regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="assets/fonts/Satoshi-Bold.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <!-- Runs before first paint: marks JS as available and applies the saved
+         or system theme so the page never flashes the wrong colors. -->
+    <script>
+      (function () {
+        var root = document.documentElement;
+        var saved = null;
+        try { saved = localStorage.getItem("theme"); } catch (error) {}
+        var systemDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        root.dataset.theme = saved === "dark" || saved === "light" ? saved : systemDark ? "dark" : "light";
+        root.classList.add("js");
+      })();
+    </script>
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-W5NEH3M1MR"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-W5NEH3M1MR');
+    </script>
+  </head>
+  <body>
+    <div class="page">
+      <!-- Fixed top bar -->
+      <header class="bar bar--top">
+        <div class="bar-inner">
+          <a class="link reveal" style="--delay: 1.3s" href="https://calendly.com/design-3ww/30min" target="_blank" rel="noopener"><span>chat w me</span><span class="link-arrow" aria-hidden="true">→</span></a>
+          <button class="theme-toggle reveal" style="--delay: 1.3s" type="button" aria-label="Switch between light and dark theme">
+            <svg class="icon-sun" viewBox="0 0 256 256" aria-hidden="true"><path d="M116,32V16a12,12,0,0,1,24,0V32a12,12,0,0,1-24,0Zm80,96a68,68,0,1,1-68-68A68.07,68.07,0,0,1,196,128Zm-24,0a44,44,0,1,0-44,44A44.05,44.05,0,0,0,172,128ZM51.51,68.49a12,12,0,1,0,17-17l-12-12a12,12,0,0,0-17,17Zm0,119-12,12a12,12,0,0,0,17,17l12-12a12,12,0,1,0-17-17ZM196,72a12,12,0,0,0,8.49-3.51l12-12a12,12,0,0,0-17-17l-12,12A12,12,0,0,0,196,72Zm8.49,115.51a12,12,0,0,0-17,17l12,12a12,12,0,0,0,17-17ZM44,128a12,12,0,0,0-12-12H16a12,12,0,0,0,0,24H32A12,12,0,0,0,44,128Zm84,84a12,12,0,0,0-12,12v16a12,12,0,0,0,24,0V224A12,12,0,0,0,128,212Zm112-96H224a12,12,0,0,0,0,24h16a12,12,0,0,0,0-24Z"/></svg>
+            <svg class="icon-moon" viewBox="0 0 256 256" aria-hidden="true"><path d="M236.37,139.4a12,12,0,0,0-12-3A84.07,84.07,0,0,1,119.6,31.59a12,12,0,0,0-15-15A108.86,108.86,0,0,0,49.69,55.07,108,108,0,0,0,136,228a107.09,107.09,0,0,0,64.93-21.69,108.86,108.86,0,0,0,38.44-54.94A12,12,0,0,0,236.37,139.4Zm-49.88,47.74A84,84,0,0,1,68.86,69.51,84.93,84.93,0,0,1,92.27,48.29Q92,52.13,92,56A108.12,108.12,0,0,0,200,164q3.87,0,7.71-.27A84.79,84.79,0,0,1,186.49,187.14Z"/></svg>
+          </button>
+        </div>
+      </header>
+
+      <main>
+        <!-- Hero: white text blended over the image ticker behind it -->
+        <section class="hero">
+          <div class="hero-inner">
+            <div class="intro">
+              <h1 class="reveal" style="--delay: 0.5s">Andrew huang</h1>
+              <h2 class="reveal" style="--delay: 0.75s">design eng <a href="https://infisical.com/" target="_blank" rel="noopener">@infisical</a></h2>
+            </div>
+            <nav class="socials" aria-label="Social links">
+              <a class="link reveal" style="--delay: 1.3s" href="https://www.behance.net/gallery/119011793/Andrews-Portfolio" target="_blank" rel="noopener" aria-label="Behance">Bē</a>
+              <a class="link reveal" style="--delay: 1.4s" href="https://www.linkedin.com/in/andrewhuhh/" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
+              <a class="link reveal" style="--delay: 1.4s" href="https://twitter.com/andrwhcom" target="_blank" rel="noopener" aria-label="X">𝕏</a>
+              <a class="link reveal" style="--delay: 1.5s" href="https://drive.google.com/file/d/1gHOfg6_Lo22cL_RI4OXpyIgxNb5w5ZBq/view?usp=sharing" target="_blank" rel="noopener"><span>resume</span><span class="link-arrow" aria-hidden="true">→</span></a>
+            </nav>
+          </div>
+        </section>
+
+        <!-- Recent Work -->
+        <section class="section">
+          <div class="section-title pop">
+            <p>Recent Work</p>
+          </div>
+          <div class="work-list">
+            <article class="work-item">
+              <a class="work-card tilt" href="https://capy.ai" target="_blank" rel="noopener" aria-label="Capy.ai">
+                <picture>
+                  <source type="image/avif" srcset="assets/images/capy-800.avif 800w, assets/images/capy-1024.avif 1024w" sizes="(min-width: 1200px) 1030px, calc(100vw - 50px)">
+                  <img src="assets/images/capy-1024.webp" width="1024" height="1024" alt="" loading="lazy" decoding="async">
+                </picture>
+              </a>
+              <div class="work-meta">
+                <a class="link" href="https://capy.ai/" target="_blank" rel="noopener">Capy.ai | Founding Design Engineer</a>
+                <a class="link" href="https://capy.ai/" target="_blank" rel="noopener">2026</a>
+              </div>
+            </article>
+            <article class="work-item">
+              <a class="work-card tilt" href="https://highlightai.com" target="_blank" rel="noopener" aria-label="Highlightai.com">
+                <picture>
+                  <source type="image/avif" srcset="assets/images/highlight-800.avif 800w, assets/images/highlight-1400.avif 1400w, assets/images/highlight-2400.avif 2400w" sizes="(min-width: 1200px) 1030px, calc(100vw - 50px)">
+                  <img src="assets/images/highlight-1400.webp" width="2400" height="1254" alt="" loading="lazy" decoding="async">
+                </picture>
+              </a>
+              <div class="work-meta">
+                <a class="link" href="https://highlightai.com/" target="_blank" rel="noopener">Highlightai.com | Design Engineer</a>
+                <a class="link" href="https://highlightai.com/" target="_blank" rel="noopener">2025</a>
+              </div>
+            </article>
+            <article class="work-item">
+              <a class="work-card tilt" href="https://www.strataigize.com/" target="_blank" rel="noopener" aria-label="Strataigize Marketing">
+                <picture>
+                  <source type="image/avif" srcset="assets/images/strataigize-800.avif 800w, assets/images/strataigize-1400.avif 1400w, assets/images/strataigize-2504.avif 2504w" sizes="(min-width: 1200px) 1030px, calc(100vw - 50px)">
+                  <img src="assets/images/strataigize-1400.webp" width="2504" height="1304" alt="" loading="lazy" decoding="async">
+                </picture>
+              </a>
+              <div class="work-meta">
+                <a class="link" href="https://www.strataigize.com/" target="_blank" rel="noopener">Strataigize Marketing | Lead Designer</a>
+                <a class="link" href="https://www.strataigize.com/" target="_blank" rel="noopener">2024</a>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- Snapshots -->
+        <section class="section">
+          <div class="section-title pop">
+            <p>Snapshots</p>
+            <p class="muted">[ websites, packaging, apps... future cases]</p>
+          </div>
+          <div class="shot-list">
+            <a class="shot shot--link tilt" href="https://andrewhuhh.github.io/poker/" target="_blank" rel="noopener" aria-label="Poker">
+              <picture>
+                <source type="image/avif" srcset="assets/images/poker-800.avif 800w, assets/images/poker-1400.avif 1400w, assets/images/poker-1910.avif 1910w" sizes="(min-width: 1200px) min(100vw - 170px, 1110px), calc(100vw - 50px)">
+                <img src="assets/images/poker-1400.webp" width="1910" height="903" alt="" loading="lazy" decoding="async">
+              </picture>
+            </a>
+            <a class="shot shot--link shot--right tilt" href="https://suika.live/" target="_blank" rel="noopener" aria-label="Suika">
+              <picture>
+                <source type="image/avif" srcset="assets/images/suika-800.avif 800w, assets/images/suika-1400.avif 1400w, assets/images/suika-1910.avif 1910w" sizes="(min-width: 1200px) min(100vw - 170px, 1110px), calc(100vw - 50px)">
+                <img src="assets/images/suika-1400.webp" width="1910" height="903" alt="" loading="lazy" decoding="async">
+              </picture>
+            </a>
+            <div class="shot tilt">
+              <picture>
+                <source type="image/avif" srcset="assets/images/parallel-1-800.avif 800w, assets/images/parallel-1-1400.avif 1400w, assets/images/parallel-1-2504.avif 2504w" sizes="(min-width: 1200px) min(100vw - 170px, 1110px), calc(100vw - 50px)">
+                <img src="assets/images/parallel-1-1400.webp" width="2504" height="1304" alt="" loading="lazy" decoding="async">
+              </picture>
+            </div>
+            <div class="shot tilt">
+              <picture>
+                <source type="image/avif" srcset="assets/images/parallel-2-800.avif 800w, assets/images/parallel-2-1400.avif 1400w, assets/images/parallel-2-2504.avif 2504w" sizes="(min-width: 1200px) min(100vw - 170px, 1110px), calc(100vw - 50px)">
+                <img src="assets/images/parallel-2-1400.webp" width="2504" height="1304" alt="" loading="lazy" decoding="async">
+              </picture>
+            </div>
+            <div class="shot tilt">
+              <picture>
+                <source type="image/avif" srcset="assets/images/pods-800.avif 800w, assets/images/pods-1400.avif 1400w, assets/images/pods-2504.avif 2504w" sizes="(min-width: 1200px) min(100vw - 170px, 1110px), calc(100vw - 50px)">
+                <img src="assets/images/pods-1400.webp" width="2504" height="1304" alt="" loading="lazy" decoding="async">
+              </picture>
+            </div>
+            <div class="shot tilt">
+              <picture>
+                <source type="image/avif" srcset="assets/images/seeav-1-800.avif 800w, assets/images/seeav-1-1400.avif 1400w, assets/images/seeav-1-2504.avif 2504w" sizes="(min-width: 1200px) min(100vw - 170px, 1110px), calc(100vw - 50px)">
+                <img src="assets/images/seeav-1-1400.webp" width="2504" height="1304" alt="" loading="lazy" decoding="async">
+              </picture>
+            </div>
+            <div class="shot tilt">
+              <picture>
+                <source type="image/avif" srcset="assets/images/seeav-2-800.avif 800w, assets/images/seeav-2-1400.avif 1400w, assets/images/seeav-2-2504.avif 2504w" sizes="(min-width: 1200px) min(100vw - 170px, 1110px), calc(100vw - 50px)">
+                <img src="assets/images/seeav-2-1400.webp" width="2504" height="1304" alt="" loading="lazy" decoding="async">
+              </picture>
+            </div>
+            <div class="shot tilt">
+              <picture>
+                <source type="image/avif" srcset="assets/images/futureth-800.avif 800w, assets/images/futureth-1400.avif 1400w, assets/images/futureth-2504.avif 2504w" sizes="(min-width: 1200px) min(100vw - 170px, 1110px), calc(100vw - 50px)">
+                <img src="assets/images/futureth-1400.webp" width="2504" height="1304" alt="" loading="lazy" decoding="async">
+              </picture>
+            </div>
+            <div class="shot tilt">
+              <picture>
+                <source type="image/avif" srcset="assets/images/everyday-800.avif 800w, assets/images/everyday-1400.avif 1400w, assets/images/everyday-2504.avif 2504w" sizes="(min-width: 1200px) min(100vw - 170px, 1110px), calc(100vw - 50px)">
+                <img src="assets/images/everyday-1400.webp" width="2504" height="1304" alt="" loading="lazy" decoding="async">
+              </picture>
+            </div>
+            <div class="shot tilt">
+              <picture>
+                <source type="image/avif" srcset="assets/images/888-800.avif 800w, assets/images/888-1400.avif 1400w, assets/images/888-2504.avif 2504w" sizes="(min-width: 1200px) min(100vw - 170px, 1110px), calc(100vw - 50px)">
+                <img src="assets/images/888-1400.webp" width="2504" height="1304" alt="" loading="lazy" decoding="async">
+              </picture>
+            </div>
+            <div class="shot tilt">
+              <picture>
+                <source type="image/avif" srcset="assets/images/sustainx-800.avif 800w, assets/images/sustainx-1400.avif 1400w, assets/images/sustainx-2504.avif 2504w" sizes="(min-width: 1200px) min(100vw - 170px, 1110px), calc(100vw - 50px)">
+                <img src="assets/images/sustainx-1400.webp" width="2504" height="1304" alt="" loading="lazy" decoding="async">
+              </picture>
+            </div>
+            <div class="shot tilt">
+              <picture>
+                <source type="image/avif" srcset="assets/images/tidal-blue-800.avif 800w, assets/images/tidal-blue-1400.avif 1400w, assets/images/tidal-blue-2504.avif 2504w" sizes="(min-width: 1200px) min(100vw - 170px, 1110px), calc(100vw - 50px)">
+                <img src="assets/images/tidal-blue-1400.webp" width="2504" height="1304" alt="" loading="lazy" decoding="async">
+              </picture>
+            </div>
+            <div class="shot tilt">
+              <picture>
+                <source type="image/avif" srcset="assets/images/onyx-800.avif 800w, assets/images/onyx-1400.avif 1400w, assets/images/onyx-2504.avif 2504w" sizes="(min-width: 1200px) min(100vw - 170px, 1110px), calc(100vw - 50px)">
+                <img src="assets/images/onyx-1400.webp" width="2504" height="1304" alt="" loading="lazy" decoding="async">
+              </picture>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <!-- Progressive blur at the top and bottom edges of the viewport.
+           Each span is one blur layer; see .edge-blur in style.css. -->
+      <div class="edge-blur edge-blur--top" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+      <div class="edge-blur edge-blur--bottom" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+
+      <!-- Fixed bottom bar -->
+      <footer class="bar bar--bottom">
+        <div class="bar-inner">
+          <p class="reveal" style="--delay: 1.5s">a forever wip.</p>
+          <a class="link reveal" style="--delay: 1.5s" href="mailto:andrwh.design@gmail.com">andrwh.design@gmail.com</a>
+        </div>
+      </footer>
+
+      <div class="grain" aria-hidden="true"></div>
+
+      <!-- Image ticker behind the hero. The four images are listed twice so
+           the loop is seamless; keep both halves identical. -->
+      <div class="ticker" aria-hidden="true">
+        <ul class="ticker-track">
+          <li class="tilt">
+            <picture>
+              <source type="image/avif" srcset="assets/images/seeav-1-1400.avif 1400w, assets/images/seeav-1-2504.avif 2504w" sizes="1030px">
+              <img src="assets/images/seeav-1-1400.webp" width="2504" height="1304" alt="" decoding="async" fetchpriority="high">
+            </picture>
+          </li>
+          <li>
+            <picture>
+              <source type="image/avif" srcset="assets/images/futureth-1400.avif 1400w, assets/images/futureth-2504.avif 2504w" sizes="1030px">
+              <img src="assets/images/futureth-1400.webp" width="2504" height="1304" alt="" decoding="async" fetchpriority="high">
+            </picture>
+          </li>
+          <li>
+            <picture>
+              <source type="image/avif" srcset="assets/images/pods-1400.avif 1400w, assets/images/pods-2504.avif 2504w" sizes="1030px">
+              <img src="assets/images/pods-1400.webp" width="2504" height="1304" alt="" decoding="async">
+            </picture>
+          </li>
+          <li class="tilt">
+            <picture>
+              <source type="image/avif" srcset="assets/images/parallel-1-1400.avif 1400w, assets/images/parallel-1-2504.avif 2504w" sizes="1030px">
+              <img src="assets/images/parallel-1-1400.webp" width="2504" height="1304" alt="" decoding="async">
+            </picture>
+          </li>
+          <li class="tilt">
+            <picture>
+              <source type="image/avif" srcset="assets/images/seeav-1-1400.avif 1400w, assets/images/seeav-1-2504.avif 2504w" sizes="1030px">
+              <img src="assets/images/seeav-1-1400.webp" width="2504" height="1304" alt="" decoding="async">
+            </picture>
+          </li>
+          <li>
+            <picture>
+              <source type="image/avif" srcset="assets/images/futureth-1400.avif 1400w, assets/images/futureth-2504.avif 2504w" sizes="1030px">
+              <img src="assets/images/futureth-1400.webp" width="2504" height="1304" alt="" decoding="async">
+            </picture>
+          </li>
+          <li>
+            <picture>
+              <source type="image/avif" srcset="assets/images/pods-1400.avif 1400w, assets/images/pods-2504.avif 2504w" sizes="1030px">
+              <img src="assets/images/pods-1400.webp" width="2504" height="1304" alt="" decoding="async">
+            </picture>
+          </li>
+          <li class="tilt">
+            <picture>
+              <source type="image/avif" srcset="assets/images/parallel-1-1400.avif 1400w, assets/images/parallel-1-2504.avif 2504w" sizes="1030px">
+              <img src="assets/images/parallel-1-1400.webp" width="2504" height="1304" alt="" decoding="async">
+            </picture>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>

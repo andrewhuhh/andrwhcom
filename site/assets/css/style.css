@@ -1,0 +1,696 @@
+/* andrwh.com
+ *
+ * Layout has two modes, switched at 1200px:
+ *   desktop  1200px and up
+ *   compact  below 1200px (tablet and phone)
+ * A second, smaller step at 499px only shrinks the type.
+ */
+
+/* ---------- Fonts ---------- */
+
+@font-face {
+  font-family: "Satoshi";
+  src: url("../fonts/Satoshi-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Satoshi";
+  src: url("../fonts/Satoshi-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Satoshi";
+  src: url("../fonts/Satoshi-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-display: swap;
+}
+
+/* Metric-matched Arial stand-ins. "Satoshi Fallback" shows while Satoshi
+   loads and covers glyphs Satoshi lacks; "Arrow" is what draws the arrows
+   after link labels. */
+@font-face {
+  font-family: "Satoshi Fallback";
+  src: local("Arial");
+  ascent-override: 102.23%;
+  descent-override: 24.29%;
+  line-gap-override: 10.12%;
+  size-adjust: 98.8%;
+}
+
+@font-face {
+  font-family: "Arrow";
+  src: local("Arial");
+  ascent-override: 89.79%;
+  descent-override: 22.36%;
+  line-gap-override: 0%;
+  size-adjust: 107.89%;
+}
+
+/* ---------- Theme ---------- */
+
+:root {
+  color-scheme: light;
+  --bg: #fff;
+  --text: #121212;
+  --border: rgba(0, 0, 0, 0.2);
+  --accent: #00ab91;
+  --accent-hover: #ed702e;
+  --sun: block;
+  --moon: none;
+
+  /* Easing curves. The linear() ones approximate the spring animations of
+     the original design. */
+  --ease-out: cubic-bezier(0, 0, 0.19, 0.99);
+  --spring-snappy: linear(0, 0.198, 0.446, 0.627, 0.75, 0.833, 0.888, 0.925, 0.95, 0.967, 0.978, 0.985, 0.99, 0.993, 0.996, 0.997, 1);
+  --spring-soft: linear(0, 0.061, 0.201, 0.368, 0.533, 0.677, 0.794, 0.883, 0.946, 0.987, 1.011, 1.024, 1.028, 1.027, 1.024, 1.019, 1.015, 1.01, 1.007, 1.004, 1);
+  --spring-bouncy: linear(0, 0.071, 0.236, 0.437, 0.634, 0.802, 0.931, 1.018, 1.07, 1.092, 1.093, 1.082, 1.064, 1.045, 1.028, 1.013, 1.003, 0.996, 0.992, 0.991, 0.991, 0.993, 0.995, 0.996, 1);
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #121212;
+  --text: #fff;
+  --border: rgba(255, 255, 255, 0.2);
+  --sun: none;
+  --moon: block;
+}
+
+/* Without JavaScript there is no data-theme, so follow the system. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    color-scheme: dark;
+    --bg: #121212;
+    --text: #fff;
+    --border: rgba(255, 255, 255, 0.2);
+    --sun: none;
+    --moon: block;
+  }
+}
+
+/* ---------- Base ---------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Satoshi", "Satoshi Fallback", sans-serif;
+  font-size: 16px;
+  line-height: 1.2;
+}
+
+h1,
+h2,
+p,
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+/* <picture> only chooses the file; the <img> inside is what gets laid out. */
+picture {
+  display: contents;
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.page {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding: 0 40px;
+  background: var(--bg);
+  overflow: hidden;
+}
+
+main {
+  display: contents;
+}
+
+/* ---------- Links ---------- */
+
+.link {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  overflow: hidden;
+  color: var(--link-color, #fff);
+  white-space: pre;
+  text-decoration: none;
+  transition: color 0.64s var(--spring-snappy), gap 0.64s var(--spring-snappy);
+}
+
+.link:hover {
+  color: var(--accent);
+}
+
+.link:active {
+  gap: 10px;
+}
+
+.link-arrow {
+  font-family: "Arrow", sans-serif;
+  transition: transform 0.64s var(--spring-snappy);
+}
+
+.link:hover .link-arrow,
+.link:active .link-arrow {
+  transform: rotate(-45deg);
+}
+
+/* ---------- Fixed top and bottom bars ---------- */
+
+/* mix-blend-mode: difference keeps the white text readable over anything:
+   it turns dark on the light background and stays light over dark images. */
+.bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  padding: 0 40px;
+  color: #fff;
+  mix-blend-mode: difference;
+}
+
+.bar--top {
+  top: 0;
+}
+
+.bar--bottom {
+  bottom: 0;
+}
+
+.bar-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  padding: 25px 40px;
+}
+
+.bar--bottom .bar-inner {
+  width: 93%;
+}
+
+.bar--bottom p {
+  font-size: 12px;
+  line-height: 1;
+  white-space: pre;
+}
+
+.theme-toggle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.theme-toggle svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+  transition: transform 0.4s var(--spring-soft);
+}
+
+.theme-toggle:hover svg {
+  transform: scale(1.1);
+}
+
+.icon-sun {
+  display: var(--sun);
+}
+
+.icon-moon {
+  display: var(--moon);
+}
+
+/* ---------- Sections ---------- */
+
+.hero,
+.section {
+  position: relative;
+  z-index: 5;
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 45px;
+}
+
+/* Hairlines down both sides of the content column. */
+.hero::after,
+.section::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: solid var(--border);
+  border-width: 0 1px;
+  pointer-events: none;
+}
+
+/* ---------- Hero ---------- */
+
+.hero {
+  --border: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  mix-blend-mode: difference;
+  animation: fade-in 0.8s cubic-bezier(0.12, 0.23, 0.5, 1) 0.2s both;
+}
+
+.hero-inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 20px;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.intro {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
+}
+
+h1 {
+  font-size: 50px;
+  font-weight: 700;
+  white-space: pre;
+}
+
+h2 {
+  font-size: 30px;
+  font-weight: 500;
+  white-space: pre;
+}
+
+h2 a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: color 0.3s cubic-bezier(0.44, 0, 0.56, 1);
+}
+
+h2 a:hover {
+  color: var(--accent-hover);
+}
+
+.socials {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+/* ---------- Recent Work and Snapshots ---------- */
+
+.section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.section-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  overflow: hidden;
+  font-size: 18px;
+  line-height: 2;
+  white-space: pre;
+}
+
+.muted {
+  opacity: 0.5;
+}
+
+.work-list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 40px;
+  width: 100%;
+  padding-bottom: 120px;
+  overflow: hidden;
+}
+
+.work-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 1030px;
+  height: 575px;
+}
+
+.work-card {
+  display: block;
+  aspect-ratio: 1.92308;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.work-card img {
+  object-fit: contain;
+}
+
+.work-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 25px;
+  --link-color: var(--text);
+}
+
+.shot-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  padding-bottom: 120px;
+  overflow: hidden;
+}
+
+.shot {
+  display: block;
+  aspect-ratio: 1.92164;
+  overflow: hidden;
+}
+
+.shot img {
+  object-fit: contain;
+}
+
+.shot--link {
+  border-radius: 20px;
+}
+
+.shot--link img {
+  object-fit: cover;
+}
+
+.shot--right img {
+  object-position: right center;
+}
+
+/* Linked images grow a little on hover. */
+.work-card img,
+.shot--link img {
+  transition: transform 0.4s var(--spring-soft);
+}
+
+@media (hover: hover) {
+  .work-card:hover img,
+  .shot--link:hover img {
+    transform: scale(1.1) rotate(1deg);
+  }
+}
+
+/* ---------- Edge blur ---------- */
+
+/* Eight stacked layers, each blurring twice as much as the one before and
+   masked to its own band, so the blur ramps up smoothly toward the edge. */
+.edge-blur {
+  position: fixed;
+  left: 0;
+  z-index: 8;
+  width: 100%;
+  pointer-events: none;
+}
+
+.edge-blur--top {
+  top: 0;
+  bottom: 680px;
+  --toward-edge: to top;
+}
+
+.edge-blur--bottom {
+  bottom: 0;
+  height: 121px;
+  --toward-edge: to bottom;
+}
+
+.edge-blur span {
+  position: absolute;
+  inset: 0;
+  -webkit-backdrop-filter: blur(var(--blur));
+  backdrop-filter: blur(var(--blur));
+  --band: linear-gradient(
+    var(--toward-edge),
+    transparent calc((var(--layer) - 1) * 12.5%),
+    #000 calc(var(--layer) * 12.5%),
+    #000 calc((var(--layer) + 1) * 12.5%),
+    transparent calc((var(--layer) + 2) * 12.5%)
+  );
+  -webkit-mask-image: var(--band);
+  mask-image: var(--band);
+}
+
+.edge-blur span:nth-child(1) { --layer: 1; --blur: 0.15625px; }
+.edge-blur span:nth-child(2) { --layer: 2; --blur: 0.3125px; }
+.edge-blur span:nth-child(3) { --layer: 3; --blur: 0.625px; }
+.edge-blur span:nth-child(4) { --layer: 4; --blur: 1.25px; }
+.edge-blur span:nth-child(5) { --layer: 5; --blur: 2.5px; }
+.edge-blur span:nth-child(6) { --layer: 6; --blur: 5px; }
+.edge-blur span:nth-child(7) { --layer: 7; --blur: 10px; }
+.edge-blur span:nth-child(8) { --layer: 8; --blur: 20px; }
+
+/* ---------- Grain ---------- */
+
+.grain {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: url("../images/grain.png") left top / 162.5px auto repeat;
+  opacity: 0.2;
+  mix-blend-mode: soft-light;
+  pointer-events: none;
+}
+
+/* ---------- Image ticker ---------- */
+
+.ticker {
+  position: absolute;
+  top: 2px;
+  left: calc(50% - min(1200px, 100%) / 2);
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  height: 834px;
+  padding: 10px;
+  overflow: hidden;
+  animation: fade-in 3s cubic-bezier(0.44, 0, 0.56, 1) 0.5s both;
+}
+
+.ticker-track {
+  --item-width: 1030px;
+  --gap: 10px;
+  display: flex;
+  flex: none;
+  gap: var(--gap);
+  list-style: none;
+  /* One loop moves the track by the four unique images, at 100px a second. */
+  animation: ticker 41.6s linear infinite;
+  will-change: transform;
+}
+
+.ticker-track li {
+  flex: none;
+  width: var(--item-width);
+  aspect-ratio: 1.92308;
+}
+
+.ticker-track img {
+  object-fit: contain;
+}
+
+@keyframes ticker {
+  to {
+    transform: translateX(calc((var(--item-width) + var(--gap)) * -4));
+  }
+}
+
+/* ---------- Motion ---------- */
+
+@keyframes fade-in {
+  from {
+    opacity: 0.001;
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0.001;
+    transform: translateY(20px);
+  }
+}
+
+/* Entrance on page load. Set --delay inline on each element. */
+.reveal {
+  animation: rise 1s var(--ease-out) var(--delay, 0s) both;
+}
+
+/* The two effects below are driven by main.js, which adds .is-visible when
+   the element scrolls into view. They only apply when JavaScript is running
+   (the .js class on <html>). */
+
+/* Images sit back and dimmed until scrolled into view, and settle back
+   again when they leave. */
+.js .tilt {
+  opacity: 0.5;
+  transform: perspective(1200px) translateY(5px) scale(0.97) rotateX(4deg);
+  transition: opacity 1s var(--ease-out), transform 1s var(--ease-out);
+}
+
+.js .tilt.is-visible {
+  opacity: 1;
+  transform: perspective(1200px) translateY(0) scale(1) rotateX(0deg);
+}
+
+/* Section titles swing up into place once. */
+.js .pop {
+  opacity: 0;
+  transform: translateY(87px) rotate(12deg);
+}
+
+.js .pop.is-visible {
+  opacity: 1;
+  transform: none;
+  transition: opacity 0.86s var(--spring-bouncy) 0.2s, transform 0.86s var(--spring-bouncy) 0.2s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .hero,
+  .ticker,
+  .ticker-track {
+    animation: none;
+  }
+
+  .js .tilt,
+  .js .pop.is-visible {
+    transition: none;
+  }
+}
+
+/* ---------- Compact layout (below 1200px) ---------- */
+
+@media (max-width: 1199.98px) {
+  .page {
+    padding: 0 25px;
+  }
+
+  .bar {
+    padding: 0;
+  }
+
+  .bar-inner,
+  .bar--bottom .bar-inner {
+    width: 100%;
+    min-width: 310px;
+    padding: 25px 20px;
+  }
+
+  .hero,
+  .section {
+    max-width: none;
+    padding: 0;
+  }
+
+  .hero,
+  .section:last-of-type {
+    min-width: 310px;
+  }
+
+  .hero::after,
+  .section::after {
+    content: none;
+  }
+
+  .hero-inner {
+    overflow: visible;
+  }
+
+  .section {
+    align-items: flex-start;
+  }
+
+  .work-list {
+    gap: 28px;
+    padding-bottom: 96px;
+  }
+
+  .work-item {
+    gap: 12px;
+    width: 100%;
+    height: auto;
+  }
+
+  .work-card {
+    border-radius: 14px;
+  }
+
+  .work-card:hover img {
+    transform: none;
+  }
+
+  .work-meta {
+    padding: 0 8px;
+    font-size: 12px;
+  }
+
+  .shot {
+    aspect-ratio: 1.92308;
+  }
+
+  .ticker {
+    top: 0;
+    height: 844px;
+  }
+}
+
+/* ---------- Small phones: smaller type ---------- */
+
+@media (max-width: 499px) {
+  h1 {
+    font-size: 32px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  .section-title {
+    font-size: 14px;
+  }
+}

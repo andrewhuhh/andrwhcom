@@ -1,0 +1,12 @@
+{
+  "name": "andrwh-site",
+  "private": true,
+  "description": "Tooling for andrwh.com. The site itself is plain HTML, CSS and JS in site/ and needs no build.",
+  "scripts": {
+    "images": "node scripts/optimize-images.mjs",
+    "serve": "python3 -m http.server 4173 --directory site"
+  },
+  "devDependencies": {
+    "sharp": "^0.34.0"
+  }
+}
